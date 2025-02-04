@@ -58,3 +58,20 @@ To reset the database to its original state:
 * Data:
     * seeds/northwind-data.sql
 
+## Sample Data Overview
+
+The database contains sample data from 2006, including:
+- Total orders per year: 48 orders in 2006
+- Monthly distribution:
+  - January: 4 orders
+  - February: 3 orders
+  - March: 8 orders
+  - April: 17 orders
+  - May: 8 orders
+  - June: 8 orders
+
+You can analyze this data using the provided stored procedures:
+```sql
+CALL orders_per_year_report();    -- Shows total orders per year
+CALL orders_per_month_report(2006);  -- Shows orders per month for a specific year
+```

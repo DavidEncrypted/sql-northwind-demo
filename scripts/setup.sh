@@ -16,4 +16,13 @@ mysql northwind < migrations/004_order_details.sql
 echo "Loading sample data..."
 mysql northwind < seeds/northwind-data.sql
 
+# Create stored procedures
+echo "Creating stored procedures..."
+for sp in procedures/*.sql; do
+    if [ -f "$sp" ]; then
+        echo "Loading $sp..."
+        mysql northwind < "$sp"
+    fi
+done
+
 echo "Setup complete!"
