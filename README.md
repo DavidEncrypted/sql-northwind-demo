@@ -30,7 +30,7 @@ sql_demo/
     │   └── northwind-erd.png
     └── models/         # Database models
         └── northwind.mwb
-
+```
 ## Setup Instructions
 
 1. Ensure you have MySQL installed and running
@@ -39,7 +39,7 @@ sql_demo/
    chmod +x scripts/*.sh
    ```
 3. Run the setup script:
-   ```bash
+4. ```bash
    ./scripts/setup.sh
    ```
 
