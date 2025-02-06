@@ -75,5 +75,5 @@ echo "  Database: northwind"
 echo "  Username: root"
 echo "  Password: northwind"
 
-echo "Connecting to MySQL..."
-docker exec -it northwind_mysql mysql -u root -pnorthwind northwind
+echo "Database is ready! To connect, run:"
+echo "  ./scripts/connect.sh"

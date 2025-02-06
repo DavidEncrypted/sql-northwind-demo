@@ -32,9 +32,18 @@ The script will:
 - Start a Docker container with MySQL
 - Initialize the Northwind database
 - Load sample data
-- Create stored procedures
-- Connect you to the database
-  - Any changes you make to files in the directory are mounted in the docker container. So you can update for example stored procedures with a normal mysql command in the terminal
+- Create stored procedures and views
+
+3. Connect to the database:
+   ```bash
+   # Linux/macOS
+   ./scripts/connect.sh
+
+   # Windows
+   scripts\connect.bat
+   ```
+
+Any changes you make to files in the directory are mounted in the docker container. So you can update for example stored procedures with a normal mysql command in the terminal
 
 ## Connection Details
 
@@ -49,16 +58,18 @@ Once started, you can connect to the database using:
 
 ### Linux/macOS
 ```bash
-./scripts/start.sh   # Start the database
-./scripts/stop.sh    # Stop the database
-./scripts/reset.sh   # Reset to initial state
+./scripts/start.sh    # Start the database
+./scripts/connect.sh  # Connect to the database
+./scripts/stop.sh     # Stop the database
+./scripts/reset.sh    # Reset to initial state
 ```
 
 ### Windows
 ```cmd
-scripts\start.bat   # Start the database
-scripts\stop.bat    # Stop the database
-scripts\reset.bat   # Reset to initial state
+scripts\start.bat    # Start the database
+scripts\connect.bat  # Connect to the database
+scripts\stop.bat     # Stop the database
+scripts\reset.bat    # Reset to initial state
 ```
 
 ## Project Structure
@@ -146,21 +157,23 @@ CALL generate_sales_performance_report('2005-01-01 00:00:00', '2007-01-31 23:59:
 
 When the database is running, you can execute MySQL commands in several ways:
 
-1. Using Docker directly:
+1. Using the connect script (interactive session):
    ```bash
-   # Interactive MySQL shell
-   docker exec -it northwind_mysql mysql -u root -pnorthwind northwind
+   # Linux/macOS
+   ./scripts/connect.sh
 
+   # Windows
+   scripts\connect.bat
+   ```
+
+2. Using Docker directly:
+   ```bash
    # Run a single command
    docker exec -it northwind_mysql mysql -u root -pnorthwind northwind -e "SELECT * FROM customers"
 
    # Execute a SQL file
    docker exec -it northwind_mysql mysql -u root -pnorthwind northwind < your-query.sql
    ```
-
-2. When connected to the mysql server after running the start script
-   ```
-
 Note: The password warning message can be safely ignored when using these commands.
 
 ## Files
