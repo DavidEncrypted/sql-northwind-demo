@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  mysql:
+    build:
+      context: ./docker
+      dockerfile: Dockerfile
+    container_name: northwind_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: northwind
+      MYSQL_DATABASE: northwind
+    ports:
+      - "3307:3307"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - .:/app
+
+volumes:
+  mysql_data:

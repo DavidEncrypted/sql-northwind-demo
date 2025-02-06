@@ -5,10 +5,8 @@ set -e
 
 echo "Resetting Northwind database..."
 
-# Drop and recreate database
-mysql -e "DROP DATABASE IF EXISTS northwind;"
+# Stop and remove containers, networks, volumes, and images created by docker-compose up
+docker-compose down -v
 
-# Run setup script
-./setup.sh
-
-echo "Reset complete!"
+# Start fresh
+./scripts/start.sh
