@@ -45,19 +45,19 @@ docker exec northwind_mysql bash -c "mysql -u root -pnorthwind northwind < /app/
 echo Creating functions...
 for %%f in (functions\*.sql) do (
     echo Loading %%f...
-    docker exec northwind_mysql bash -c "mysql -u root -pnorthwind northwind < /app/%%f"
+    docker exec northwind_mysql bash -c "mysql -u root -pnorthwind northwind < /app/functions/%%~nxf"
 )
 
 echo Creating views...
 for %%f in (views\*.sql) do (
     echo Loading %%f...
-    docker exec northwind_mysql bash -c "mysql -u root -pnorthwind northwind < /app/%%f"
+    docker exec northwind_mysql bash -c "mysql -u root -pnorthwind northwind < /app/views/%%~nxf"
 )
 
 echo Creating stored procedures...
 for %%f in (procedures\*.sql) do (
     echo Loading %%f...
-    docker exec northwind_mysql bash -c "mysql -u root -pnorthwind northwind < /app/%%f"
+    docker exec northwind_mysql bash -c "mysql -u root -pnorthwind northwind < /app/procedures/%%~nxf"
 )
 
 echo.
