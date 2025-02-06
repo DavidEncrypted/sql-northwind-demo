@@ -74,4 +74,5 @@ You can analyze this data using the provided stored procedures:
 ```sql
 CALL orders_per_year_report();    -- Shows total orders per year
 CALL orders_per_month_report(2006);  -- Shows orders per month for a specific year
+CALL generate_sales_performance_report('2005-01-01 00:00:00', '2007-01-31 23:59:59', 'DETAILED'); -- Show the sales performance over a certain time
 ```
