@@ -1,14 +1,5 @@
 @echo off
 setlocal enabledelayedexpansion
-echo Checking if port 3307 is available...
-netstat -ano | findstr :3307 > nul
-if not errorlevel 1 (
-    echo Error: Port 3307 is already in use.
-    echo Please stop any running MySQL instances first:
-    echo   - For local MySQL: net stop mysql
-    echo   - For Docker: docker stop $(docker ps -q --filter ancestor=mysql^)
-    exit /b 1
-)
 
 echo Starting Northwind MySQL container...
 docker-compose up -d
